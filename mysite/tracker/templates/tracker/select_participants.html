@@ -1,0 +1,26 @@
+<!-- select_participants.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selecionar Participantes - D&D</title>
+</head>
+<body>
+    <h1>Selecionar Participantes</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" name="participant_type" value="monstro">Adicionar Monstro</button>
+        <button type="submit" name="participant_type" value="personagem">Adicionar Personagem</button>
+    </form>
+
+    <h2>Lista de Participantes</h2>
+    <ul>
+        {% for participant in participants_list %}
+            <p>{{ participant }}</p>
+        {% endfor %}
+    </ul>
+</body>
+</html>

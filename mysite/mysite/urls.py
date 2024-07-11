@@ -21,5 +21,6 @@ from users import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/', include('users.urls')),
+    path('tracker/', include('tracker.urls')),
     path('', views.index, name='index'),
 ]
