@@ -1,0 +1,25 @@
+<!-- projeto/users/templates/users/index.html -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Página Inicial</title>
+</head>
+<body>
+    <header>
+        <h1>Bem-vindo à minha página inicial!</h1>
+    </header>
+    <main>
+        <p>Esta é uma página inicial simples para o aplicativo de usuários.</p>
+        <p>Você pode começar a adicionar seu conteúdo aqui.</p>
+    </main>
+    <footer>
+        <p>Rodapé do site</p>
+        {% if user.is_authenticated %}
+            <p><a href="{% url 'logout' %}">Logout</a></p>
+        {% endif %}
+    </footer>
+</body>
+</html>
