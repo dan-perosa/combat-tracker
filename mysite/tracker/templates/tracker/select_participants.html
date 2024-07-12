@@ -15,12 +15,29 @@
         <button type="submit" name="participant_type" value="monstro">Adicionar Monstro</button>
         <button type="submit" name="participant_type" value="personagem">Adicionar Personagem</button>
     </form>
-
+    <h2>Lista de Opções</h2>
+    <ul>
+        {% if displayed_options %}
+        <form method="post">
+            {% csrf_token %}
+            {% for option in displayed_options %}
+            <button type="submit", name="added_option", value"added_{{option}}">{{ option }}</button>
+            {% endfor %}
+        </form>
+        {% endif %}
+    </ul>
     <h2>Lista de Participantes</h2>
     <ul>
-        {% for participant in participants_list %}
-            <p>{{ participant }}</p>
-        {% endfor %}
+        {% if participant_characters %}
+            {% for participant_character in participant_characters %}
+                <p>{{ participant_character }}</p>
+            {% endfor %}
+        {% endif %}
+        {% if participant_monsters %}
+            {% for participant_monster in participant_monsters %}
+                <p>{{ participant_monster }}</p>
+            {% endfor %}
+        {% endif %}
     </ul>
 </body>
 </html>

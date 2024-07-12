@@ -19,7 +19,7 @@
         <p>Rodapé do site</p>
         {% if user.is_authenticated %}
             <p><a href="{% url 'logout' %}">Logout</a></p>
-            <p><a href="{% url 'select_participants' %}">Clique aqui para iniciar</a></p>
+            <p><a href="{% url 'select_participants' %}">Clique aqui para criar uma batalha</a></p>
         {% endif %}
     </footer>
 </body>
