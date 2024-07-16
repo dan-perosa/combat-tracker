@@ -21,7 +21,7 @@
         <form method="post">
             {% csrf_token %}
             {% for option in displayed_options %}
-            <button type="submit", name="added_option", value"added_{{option}}">{{ option }}</button>
+                <button type="submit", name="added_option", value="{{option}}">{{ option }}</button>
             {% endfor %}
         </form>
         {% endif %}

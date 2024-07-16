@@ -10,13 +10,16 @@ def select_participants(request):
     characters = Character.objects.all()
 
     battle = Battle.objects
-    battle.create(created_by=logged_in_username)
+    
+    if request.method == "GET":
+        battle.create(created_by=logged_in_username)
 
     displayed_options = []
 
     filtered_battle = battle.filter(created_by=logged_in_username)
-    ordered_battle = filtered_battle.order_by("created_at")
+    ordered_battle = filtered_battle.order_by("-created_at")
     this_battle = ordered_battle.first()
+    
 
     if request.method == 'POST':
 
@@ -25,10 +28,13 @@ def select_participants(request):
 
         if item_to_add:
 
-            if item_to_add in monsters.values():
-                this_battle.participant_monsters = item_to_add
+            if item_to_add in monsters.values_list('name', flat=True):
+                this_battle.participant_monsters_id = Monster.objects.filter(name=item_to_add)
+                this_battle.save()
             else:
                 this_battle.participant_characters = item_to_add
+                this_battle.save()
+
      
         if participant_type_options == 'monstro':
             displayed_options = monsters
